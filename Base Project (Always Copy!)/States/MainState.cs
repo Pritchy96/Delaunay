@@ -19,8 +19,6 @@ using System.Windows.Forms;
           //Add SuperTriangles.
           triangles.Add(new Triangle(new Vector2(0, 0), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
           triangles.Add(new Triangle(new Vector2(Screen.WIDTH, Screen.HEIGHT), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
-          triangles.Add(new Triangle(new Vector2(Screen.WIDTH- 400, Screen.HEIGHT - 20), new Vector2(200, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
-          triangles.Add(new Triangle(new Vector2(Screen.WIDTH- 350, Screen.HEIGHT- 350), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
         }
 
         public override void Update()
@@ -34,15 +32,38 @@ using System.Windows.Forms;
         private void recalculate(Vector2 newPoint)
         {
             ArrayList containsPoint = new ArrayList();
+            ArrayList containedEdges = new ArrayList();
+            ArrayList uniqueEdges = new ArrayList();
 
-            foreach (Triangle t in triangles)
+            foreach (Triangle t in triangles.ToArray())
             {
                 //Check whether new point is within circumcircle
                 if ((Math.Pow(newPoint.x - t.circumcenter.x, 2)) + (Math.Pow(newPoint.y - t.circumcenter.y, 2)) < Math.Pow(t.circumradius, 2))
                 {
-                    Console.WriteLine("Huzzah!");
+                    Console.WriteLine("New Point within Circumcircle");
+                    containsPoint.Add(t);
+                    //This triangle will be broken up into smaller triangles, so remove it from triangles list.
+                    triangles.Remove(t);
+
+                    //Add edges to list.
+                    containedEdges.Add(new Edge(t.p1, t.p2));
+                    containedEdges.Add(new Edge(t.p2, t.p3));
+                    containedEdges.Add(new Edge(t.p3, t.p1));
+                    Console.WriteLine("Added Contained Edges!");
                 }
             }
+
+            foreach (Edge e in containedEdges)
+            {
+                if (!e.isIn(containedEdges))
+                {
+                    uniqueEdges.Add(e);
+                    Console.WriteLine("Found unique edge!");
+                }
+            }
+
+
+
             Console.WriteLine();
         }
 
