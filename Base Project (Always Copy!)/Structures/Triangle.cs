@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Base_Project__Always_Copy__.Structures
 {
@@ -65,5 +66,21 @@ namespace Base_Project__Always_Copy__.Structures
             circumradius = circumcenter.DistanceTo(p2);
         }
 
+
+
+        public void Redraw(PaintEventArgs e)
+        {
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 3, (int)p1.y - 3, 6, 6));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 3, (int)p2.y - 3, 6, 6));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p3.x - 3, (int)p3.y - 3, 6, 6));
+
+            int topX = (int)(circumcenter.x - circumradius);
+            int topY = (int)(circumcenter.y - circumradius);
+            float width = (float)(2 * circumradius);
+            float height = (float)(2 * circumradius);
+
+            e.Graphics.DrawEllipse(Pens.Blue, topX, topY, width, height);
+        }
+         
     }
 }

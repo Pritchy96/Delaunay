@@ -12,14 +12,15 @@ using System.Windows.Forms;
 
     class MainState : BasicState
     {
-        Vector2 v1 = new Vector2(400, 120), v2 = new Vector2(34, 180), v3 = new Vector2(160, 190);
-        Triangle triangle;
+        public ArrayList triangles = new ArrayList();
 
         public MainState()
         {
-            triangle = new Triangle(v1, v2, v3);
-            Console.WriteLine("Center: X: " + triangle.circumcenter.x.ToString() + ", Y: " + triangle.circumcenter.y.ToString() + ", Radius: " + triangle.circumradius.ToString());
-        
+          //Add SuperTriangles.
+          triangles.Add(new Triangle(new Vector2(0, 0), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
+          triangles.Add(new Triangle(new Vector2(Screen.WIDTH, Screen.HEIGHT), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
+          triangles.Add(new Triangle(new Vector2(Screen.WIDTH- 400, Screen.HEIGHT - 20), new Vector2(200, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
+          triangles.Add(new Triangle(new Vector2(Screen.WIDTH- 350, Screen.HEIGHT- 350), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
         }
 
         public override void Update()
@@ -30,23 +31,34 @@ using System.Windows.Forms;
         {
         }
 
-        private void recalculate()
+        private void recalculate(Vector2 newPoint)
         {
+            ArrayList containsPoint = new ArrayList();
 
+            foreach (Triangle t in triangles)
+            {
+                //Check whether new point is within circumcircle
+                if ((Math.Pow(newPoint.x - t.circumcenter.x, 2)) + (Math.Pow(newPoint.y - t.circumcenter.y, 2)) < Math.Pow(t.circumradius, 2))
+                {
+                    Console.WriteLine("Huzzah!");
+                }
+            }
+            Console.WriteLine();
         }
 
 
         public override void MouseClicked(MouseEventArgs e)
         {
-            
-            v1 = new Vector2(e.X, e.Y);
-            triangle = new Triangle(v1, v2, v3);
- 
+            recalculate(new Vector2(e.X, e.Y));
         }
 
         public override void Redraw(PaintEventArgs e)
         {
-
+            foreach (Triangle t in triangles)
+            {
+                t.Redraw(e);
+            }
+            /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v1.x - 3, (int)v1.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v2.x - 3, (int)v2.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v3.x - 3, (int)v3.y - 3, 6, 6));
@@ -57,6 +69,13 @@ using System.Windows.Forms;
             float height = (float)(2 * triangle.circumradius);
             
             e.Graphics.DrawEllipse(Pens.Blue, topX, topY, width, height);
+             * 
+             * */
+
+
+
+
+
 
             /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p1.X - 3, p1.Y - 3, 6, 6));
