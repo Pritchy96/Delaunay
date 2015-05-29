@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Base_Project__Always_Copy__.Structures;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,16 +12,14 @@ using System.Windows.Forms;
 
     class MainState : BasicState
     {
-        Point p1 = new Point(150, 173);
-        Point p2 = new Point(300, 334);
-        Point p3 = new Point(157, 273);
-        Point mid12, mid13;
-        int x, y;
-        float perpGrad12, perpGrad13, c12, c13;
+        Vector2 v1 = new Vector2(400, 120), v2 = new Vector2(34, 180), v3 = new Vector2(160, 190);
+        Triangle triangle;
 
         public MainState()
         {
-
+            triangle = new Triangle(v1, v2, v3);
+            Console.WriteLine("Center: X: " + triangle.circumcenter.x.ToString() + ", Y: " + triangle.circumcenter.y.ToString() + ", Radius: " + triangle.circumradius.ToString());
+        
         }
 
         public override void Update()
@@ -33,28 +32,33 @@ using System.Windows.Forms;
 
         private void recalculate()
         {
-            mid12 = new Point((p2.X + p1.X) / 2, (p2.Y + p1.Y) / 2);
-            mid13 = new Point((p3.X + p1.X) / 2, (p3.Y + p1.Y) / 2);
 
-            perpGrad12 = (float) -1 / (float)((float)(p2.Y - p1.Y) / (float)(p2.X - p1.X));
-            perpGrad13 = (float) -1 / (float)((float)(p3.Y - p1.Y) / (float)(p3.X - p1.X));
-
-            c12 = mid12.Y - (perpGrad12 * mid12.X);
-            c13 = mid13.Y - (perpGrad13 * mid13.X);
-
-            x = (int)((c13 - c12) / (perpGrad12 - perpGrad13));
-            y = (int)((perpGrad12 * x) + c12);
         }
 
 
         public override void MouseClicked(MouseEventArgs e)
         {
-            p1 = new Point(e.X, e.Y);
-            recalculate();
+            
+            v1 = new Vector2(e.X, e.Y);
+            triangle = new Triangle(v1, v2, v3);
+ 
         }
 
         public override void Redraw(PaintEventArgs e)
         {
+
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v1.x - 3, (int)v1.y - 3, 6, 6));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v2.x - 3, (int)v2.y - 3, 6, 6));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v3.x - 3, (int)v3.y - 3, 6, 6));
+
+            int topX = (int)(triangle.circumcenter.x - triangle.circumradius);
+            int topY = (int)(triangle.circumcenter.y - triangle.circumradius);
+            float width = (float)(2 * triangle.circumradius);
+            float height = (float)(2 * triangle.circumradius);
+            
+            e.Graphics.DrawEllipse(Pens.Blue, topX, topY, width, height);
+
+            /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p1.X - 3, p1.Y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p2.X - 3, p2.Y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p3.X - 3, p3.Y - 3, 6, 6));
@@ -74,6 +78,7 @@ using System.Windows.Forms;
             float height = 2 * radius;
 
             e.Graphics.DrawEllipse(Pens.Blue, topX, topY, width, height);
+             */
         }
     }
 
