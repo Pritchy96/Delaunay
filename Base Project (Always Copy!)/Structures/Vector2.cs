@@ -16,6 +16,15 @@ namespace Base_Project__Always_Copy__.Structures
             this.y = y;
         }
 
+        public Boolean isSame (Vector2 point)
+        {
+            if (x == point.x && y == point.y)
+                return true;
+            else
+                return false;
+
+        }
+
         /// <summary>
         /// Finds Distance between this position and Point
         /// </summary>

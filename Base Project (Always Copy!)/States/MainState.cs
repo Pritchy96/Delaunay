@@ -12,13 +12,14 @@ using System.Windows.Forms;
 
     class MainState : BasicState
     {
-        public ArrayList triangles = new ArrayList();
+        public List<Triangle> triangles = new List<Triangle>();
 
         public MainState()
         {
           //Add SuperTriangles.
           triangles.Add(new Triangle(new Vector2(0, 0), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
           triangles.Add(new Triangle(new Vector2(Screen.WIDTH, Screen.HEIGHT), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
+          //triangles.Add(new Triangle(new Vector2(200, 10), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
         }
 
         public override void Update()
@@ -62,7 +63,10 @@ using System.Windows.Forms;
                 }
             }
 
-
+            foreach (Edge e in uniqueEdges)
+            {
+                triangles.Add(new Triangle(e.p1, e.p2, newPoint));
+            }
 
             Console.WriteLine();
         }
@@ -77,8 +81,25 @@ using System.Windows.Forms;
         {
             foreach (Triangle t in triangles)
             {
-                t.Redraw(e);
+                t.Redraw(e);     
             }
+
+            for (int i = 1; i < triangles.Count; i++)
+            {
+                Point point1 = new Point((int)triangles[i].circumcenter.x, (int)triangles[i].circumcenter.y);
+                Point point2;
+
+                if (i + 1 < triangles.Count())
+                {
+                    point2 = new Point((int)triangles[i++].circumcenter.x, (int)triangles[i++].circumcenter.y);
+                }
+                else
+                {
+                    point2 = new Point((int)triangles[0].circumcenter.x, (int)triangles[0].circumcenter.y);
+                }
+                e.Graphics.DrawLine(Pens.ForestGreen, point1, point2);
+            }
+            
             /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v1.x - 3, (int)v1.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v2.x - 3, (int)v2.y - 3, 6, 6));
