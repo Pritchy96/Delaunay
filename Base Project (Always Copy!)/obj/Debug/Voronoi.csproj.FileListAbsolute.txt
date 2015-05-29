@@ -1,0 +1,30 @@
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Voronoi.csprojResolveAssemblyReference.cache
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Screen.resources
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Base_Project__Always_Copy__.Properties.Resources.resources
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Voronoi.csproj.GenerateResource.Cache
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Voronoi.csprojResolveAssemblyReference.cache
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Screen.resources
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Base_Project__Always_Copy__.Properties.Resources.resources
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Voronoi.csproj.GenerateResource.Cache
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Delaunay Notes\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Voronoi.csprojResolveAssemblyReference.cache
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Screen.resources
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Base_Project__Always_Copy__.Properties.Resources.resources
+C:\Users\Pritchy\Desktop\Other\Delaunay Notes\Veronoi\Base Project (Always Copy!)\obj\Debug\Voronoi.csproj.GenerateResource.Cache
+C:\Users\Pritchy\Desktop\Delaunay\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\Delaunay\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Delaunay\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb

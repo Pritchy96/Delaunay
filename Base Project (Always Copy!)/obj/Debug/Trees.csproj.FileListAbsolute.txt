@@ -1,0 +1,21 @@
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Trees.csprojResolveAssemblyReference.cache
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Screen.resources
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Base_Project__Always_Copy__.Properties.Resources.resources
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Trees.csproj.GenerateResource.Cache
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\Base_Project_Csharp\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).pdb
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Trees.csprojResolveAssemblyReference.cache
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Screen.resources
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Base_Project__Always_Copy__.Properties.Resources.resources
+C:\Users\Pritchy\Desktop\GitHub\Base_Project_Csharp\Base Project (Always Copy!)\obj\Debug\Trees.csproj.GenerateResource.Cache
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\bin\Debug\Base Project (Always Copy!).exe.config
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).exe
+C:\Users\Pritchy\Desktop\GitHub\Veronoi\Base Project (Always Copy!)\obj\Debug\Base Project (Always Copy!).pdb
