@@ -83,6 +83,19 @@ namespace Base_Project__Always_Copy__.Structures
 
         public void Redraw(PaintEventArgs e)
         {
+            
+           // e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 3, (int)circumcenter.y - 3, 6, 6));
+
+            Point point1 = new Point((int)p1.x, (int)p1.y), point2 = new Point((int)p2.x, (int)p2.y), point3 = new Point((int)p3.x, (int)p3.y);
+            e.Graphics.DrawLine(Pens.Black, point1, point2);
+            e.Graphics.DrawLine(Pens.Black, point2, point3);
+            e.Graphics.DrawLine(Pens.Black, point3, point1);
+
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 1, (int)p1.y - 1, 2, 2));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 1, (int)p2.y - 1, 2, 2));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p3.x - 1, (int)p3.y - 1, 2, 2));
+
+            /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 3, (int)p1.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 3, (int)p2.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p3.x - 3, (int)p3.y - 3, 6, 6));
@@ -92,7 +105,7 @@ namespace Base_Project__Always_Copy__.Structures
             Point point1 = new Point((int)p1.x, (int)p1.y), point2 = new Point((int)p2.x, (int)p2.y), point3 =  new Point((int)p3.x, (int)p3.y);
             e.Graphics.DrawLine(Pens.Black, point1, point2);
             e.Graphics.DrawLine(Pens.Black, point2, point3);
-            e.Graphics.DrawLine(Pens.Black, point3, point1);
+            e.Graphics.DrawLine(Pens.Black, point3, point1);*/
 
             /*
             int topX = (int)(circumcenter.x - circumradius);

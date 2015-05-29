@@ -13,6 +13,8 @@ using System.Windows.Forms;
     class MainState : BasicState
     {
         public List<Triangle> triangles = new List<Triangle>();
+        public List<Vector2> Points = new List<Vector2>();
+        Random rand = new Random();
 
         public MainState()
         {
@@ -20,6 +22,11 @@ using System.Windows.Forms;
           triangles.Add(new Triangle(new Vector2(0, 0), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
           triangles.Add(new Triangle(new Vector2(Screen.WIDTH, Screen.HEIGHT), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
           //triangles.Add(new Triangle(new Vector2(200, 10), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
+
+          for (int i = 0; i < 1000; i++)
+          {
+              Recalculate(new Vector2(rand.NextDouble() * Screen.WIDTH, rand.NextDouble() * Screen.HEIGHT));
+          }
         }
 
         public override void Update()
@@ -30,7 +37,7 @@ using System.Windows.Forms;
         {
         }
 
-        private void recalculate(Vector2 newPoint)
+        private void Recalculate(Vector2 newPoint)
         {
             ArrayList containsPoint = new ArrayList();
             ArrayList containedEdges = new ArrayList();
@@ -41,7 +48,7 @@ using System.Windows.Forms;
                 //Check whether new point is within circumcircle
                 if ((Math.Pow(newPoint.x - t.circumcenter.x, 2)) + (Math.Pow(newPoint.y - t.circumcenter.y, 2)) < Math.Pow(t.circumradius, 2))
                 {
-                    Console.WriteLine("New Point within Circumcircle");
+                  //  Console.WriteLine("New Point within Circumcircle");
                     containsPoint.Add(t);
                     //This triangle will be broken up into smaller triangles, so remove it from triangles list.
                     triangles.Remove(t);
@@ -50,7 +57,7 @@ using System.Windows.Forms;
                     containedEdges.Add(new Edge(t.p1, t.p2));
                     containedEdges.Add(new Edge(t.p2, t.p3));
                     containedEdges.Add(new Edge(t.p3, t.p1));
-                    Console.WriteLine("Added Contained Edges!");
+                   // Console.WriteLine("Added Contained Edges!");
                 }
             }
 
@@ -59,7 +66,7 @@ using System.Windows.Forms;
                 if (!e.isIn(containedEdges))
                 {
                     uniqueEdges.Add(e);
-                    Console.WriteLine("Found unique edge!");
+                    //Console.WriteLine("Found unique edge!");
                 }
             }
 
@@ -68,13 +75,13 @@ using System.Windows.Forms;
                 triangles.Add(new Triangle(e.p1, e.p2, newPoint));
             }
 
-            Console.WriteLine();
+        //    Console.WriteLine();
         }
 
 
         public override void MouseClicked(MouseEventArgs e)
         {
-            recalculate(new Vector2(e.X, e.Y));
+            Recalculate(new Vector2(e.X, e.Y));
         }
 
         public override void Redraw(PaintEventArgs e)
@@ -84,6 +91,7 @@ using System.Windows.Forms;
                 t.Redraw(e);     
             }
 
+            /*
             for (int i = 1; i < triangles.Count; i++)
             {
                 Point point1 = new Point((int)triangles[i].circumcenter.x, (int)triangles[i].circumcenter.y);
@@ -99,7 +107,7 @@ using System.Windows.Forms;
                 }
                 e.Graphics.DrawLine(Pens.ForestGreen, point1, point2);
             }
-            
+            */
             /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v1.x - 3, (int)v1.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v2.x - 3, (int)v2.y - 3, 6, 6));

@@ -30,7 +30,7 @@ namespace Base_Project__Always_Copy__.Structures
                     if (!foundSelf)
                     {
                         foundSelf = true;
-                        Console.WriteLine("Found Self");
+                    //    Console.WriteLine("Found Self");
                     }
                     else
                     {
