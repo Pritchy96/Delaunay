@@ -108,9 +108,11 @@ namespace Base_Project__Always_Copy__.Structures
            // e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 3, (int)circumcenter.y - 3, 6, 6));
 
             Point point1 = new Point((int)p1.x, (int)p1.y), point2 = new Point((int)p2.x, (int)p2.y), point3 = new Point((int)p3.x, (int)p3.y);
+            /*
             e.Graphics.DrawLine(Pens.Blue, point1, point2);
             e.Graphics.DrawLine(Pens.Blue, point2, point3);
             e.Graphics.DrawLine(Pens.Blue, point3, point1);
+             * */
                                                                                             
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 2, (int)p1.y - 2, 4, 4));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 2, (int)p2.y - 2, 4, 4));
