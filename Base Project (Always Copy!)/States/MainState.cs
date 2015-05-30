@@ -13,7 +13,8 @@ using System.Windows.Forms;
     class MainState : BasicState
     {
         public List<Triangle> triangles = new List<Triangle>();
-        public List<Vector2> Points = new List<Vector2>();
+        public List<Vector2> points = new List<Vector2>();
+        public List<Edge> voronoiEdges = new List<Edge>();
         Random rand = new Random();
 
         public MainState()
@@ -23,10 +24,11 @@ using System.Windows.Forms;
           triangles.Add(new Triangle(new Vector2(Screen.WIDTH, Screen.HEIGHT), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
           //triangles.Add(new Triangle(new Vector2(200, 10), new Vector2(0, Screen.HEIGHT), new Vector2(Screen.WIDTH, 0)));
 
-          for (int i = 0; i < 1000; i++)
+          for (int i = 0; i < 200; i++)
           {
-              Recalculate(new Vector2(rand.NextDouble() * Screen.WIDTH, rand.NextDouble() * Screen.HEIGHT));
+           //  Recalculate(new Vector2(rand.NextDouble() * Screen.WIDTH, rand.NextDouble() * Screen.HEIGHT));
           }
+          GenerateVoronoi();
         }
 
         public override void Update()
@@ -63,7 +65,7 @@ using System.Windows.Forms;
 
             foreach (Edge e in containedEdges)
             {
-                if (!e.isIn(containedEdges))
+                if (e.isUnique(containedEdges))
                 {
                     uniqueEdges.Add(e);
                     //Console.WriteLine("Found unique edge!");
@@ -74,14 +76,25 @@ using System.Windows.Forms;
             {
                 triangles.Add(new Triangle(e.p1, e.p2, newPoint));
             }
+        }
 
-        //    Console.WriteLine();
+        public void GenerateVoronoi()
+        {
+            voronoiEdges.Clear();
+            foreach (Triangle t in triangles)
+            {
+                foreach (Triangle t2 in t.SharesEdge(triangles))
+                {
+                    voronoiEdges.Add(new Edge(t.circumcenter, t2.circumcenter));
+                }
+            }
         }
 
 
         public override void MouseClicked(MouseEventArgs e)
         {
             Recalculate(new Vector2(e.X, e.Y));
+            GenerateVoronoi();
         }
 
         public override void Redraw(PaintEventArgs e)
@@ -91,63 +104,10 @@ using System.Windows.Forms;
                 t.Redraw(e);     
             }
 
-            /*
-            for (int i = 1; i < triangles.Count; i++)
+            foreach (Edge edge in voronoiEdges)
             {
-                Point point1 = new Point((int)triangles[i].circumcenter.x, (int)triangles[i].circumcenter.y);
-                Point point2;
-
-                if (i + 1 < triangles.Count())
-                {
-                    point2 = new Point((int)triangles[i++].circumcenter.x, (int)triangles[i++].circumcenter.y);
-                }
-                else
-                {
-                    point2 = new Point((int)triangles[0].circumcenter.x, (int)triangles[0].circumcenter.y);
-                }
-                e.Graphics.DrawLine(Pens.ForestGreen, point1, point2);
+                e.Graphics.DrawLine(Pens.Red, new Point((int)edge.p1.x, (int)edge.p1.y), new Point((int)edge.p2.x, (int)edge.p2.y));
             }
-            */
-            /*
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v1.x - 3, (int)v1.y - 3, 6, 6));
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v2.x - 3, (int)v2.y - 3, 6, 6));
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)v3.x - 3, (int)v3.y - 3, 6, 6));
-
-            int topX = (int)(triangle.circumcenter.x - triangle.circumradius);
-            int topY = (int)(triangle.circumcenter.y - triangle.circumradius);
-            float width = (float)(2 * triangle.circumradius);
-            float height = (float)(2 * triangle.circumradius);
-            
-            e.Graphics.DrawEllipse(Pens.Blue, topX, topY, width, height);
-             * 
-             * */
-
-
-
-
-
-
-            /*
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p1.X - 3, p1.Y - 3, 6, 6));
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p2.X - 3, p2.Y - 3, 6, 6));
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle(p3.X - 3, p3.Y - 3, 6, 6));
-
-            e.Graphics.FillEllipse(Brushes.DarkRed, new Rectangle(mid12.X - 3, mid12.Y - 3, 6, 6));
-            e.Graphics.FillEllipse(Brushes.DarkRed, new Rectangle(mid12.X - 3, mid12.Y - 3, 6, 6));
-
-
-            e.Graphics.DrawLine(Pens.Orange, p1, p2);
-            e.Graphics.DrawLine(Pens.Orange, p3, p2);
-            e.Graphics.DrawLine(Pens.Orange, p1, p3);
-
-            float radius = (float) Math.Sqrt(Math.Pow(p1.X - mid12.X, 2) + Math.Pow(p1.Y - mid12.Y, 2));
-            int topX = (int) (x - radius);
-            int topY = (int) (y - radius);
-            float width = 2 * radius;
-            float height = 2 * radius;
-
-            e.Graphics.DrawEllipse(Pens.Blue, topX, topY, width, height);
-             */
         }
     }
 

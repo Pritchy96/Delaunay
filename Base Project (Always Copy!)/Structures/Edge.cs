@@ -18,7 +18,12 @@ namespace Base_Project__Always_Copy__.Structures
             this.p2 = p2;
         }
 
-        public bool isIn(ArrayList edges)
+        /// <summary>
+        /// Checks to see whether edge is listed twice within given list.
+        /// </summary>
+        /// <param name="edges"></param>
+        /// <returns></returns>
+        public bool isUnique(ArrayList edges)
         {
             bool foundSelf = false;
 
@@ -27,18 +32,18 @@ namespace Base_Project__Always_Copy__.Structures
                 //If the two points match up (either way round)
                 if (((p1.x == e.p1.x && p1.y == e.p1.y && p2.x == e.p2.x && p2.y == e.p2.y) || (p1.x == e.p2.x && p1.y == e.p2.y && p2.x == e.p1.x && p2.y == e.p1.y)))
                 {
-                    if (!foundSelf)
+                    if (!foundSelf) //The Edge will be listed once in the list itself, which will lead to a false positive.
                     {
                         foundSelf = true;
                     //    Console.WriteLine("Found Self");
                     }
                     else
                     {
-                        return true;
+                        return false;
                     }
                 }
             }
-            return false;
+            return true;
         }
     }
 }

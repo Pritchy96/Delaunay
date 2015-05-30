@@ -10,7 +10,7 @@ namespace Base_Project__Always_Copy__.Structures
 {
     class Triangle
     {
-        public Vector2 p1, p2, p3, circumcenter;
+        public Vector2 p1 = new Vector2(0, 0), p2 = new Vector2(0, 0), p3 = new Vector2(0, 0), circumcenter;
         public double circumradius;
 
         public Triangle(Vector2 p1, Vector2 p2, Vector2 p3)
@@ -19,7 +19,7 @@ namespace Base_Project__Always_Copy__.Structures
             this.p2 = p2;
             this.p3 = p3;
             calculateCircumscribedCircle();
-        }
+        } 
 
 
         //Code dragged from http://www.war-worlds.com/blog/2012/06/planet-rendering---part-2-voroni-diagrams-and-delaunay-triangulation for speed, will rewrite later.
@@ -66,19 +66,40 @@ namespace Base_Project__Always_Copy__.Structures
             circumradius = circumcenter.DistanceTo(p2);
         }
 
+
+        /// <summary>
+        /// Checks if a triangle in the given list shares an edge with this one (excluding itself).
+        /// </summary>
+        /// <param name="triangles">List of Triangles to check for shared edges</param>
+        /// <returns></returns>
         public List<Triangle> SharesEdge (List<Triangle> triangles)
         {
-            List<Triangle> commonEdge = new List<Triangle>();
+            List<Triangle> hasCommonEdge = new List<Triangle>();
 
             foreach (Triangle t in triangles)
             {
-              //  if (p1.Equals(t.p1) && p2 p1.Equals(t.p2)
-                    
+                int pointMatches = 0;   //If any two points of the triangles are equal, it must share an edge.
+
+                if ((p1.Equals(t.p1) || p1.Equals(t.p2) || p1.Equals(t.p3)))
+                {
+                    pointMatches++;
+                }
+                if ((p2.Equals(t.p1) || p2.Equals(t.p2) || p2.Equals(t.p3)))
+                {
+                    pointMatches++;
+                }
+                if ((p3.Equals(t.p1) || p3.Equals(t.p2) || p3.Equals(t.p3)))
+                {
+                    pointMatches++;
+                }
+
+                //They share an edge!
+                if (pointMatches == 2)  //If < 2, it does not share an edge, if = 3 it is the triangle we are checking.
+                {
+                    hasCommonEdge.Add(t);
+                }
             }
-
-
-
-            return commonEdge;
+            return hasCommonEdge;
         }
 
         public void Redraw(PaintEventArgs e)
@@ -87,13 +108,15 @@ namespace Base_Project__Always_Copy__.Structures
            // e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 3, (int)circumcenter.y - 3, 6, 6));
 
             Point point1 = new Point((int)p1.x, (int)p1.y), point2 = new Point((int)p2.x, (int)p2.y), point3 = new Point((int)p3.x, (int)p3.y);
-            e.Graphics.DrawLine(Pens.Black, point1, point2);
-            e.Graphics.DrawLine(Pens.Black, point2, point3);
-            e.Graphics.DrawLine(Pens.Black, point3, point1);
+            e.Graphics.DrawLine(Pens.Blue, point1, point2);
+            e.Graphics.DrawLine(Pens.Blue, point2, point3);
+            e.Graphics.DrawLine(Pens.Blue, point3, point1);
+                                                                                            
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 2, (int)p1.y - 2, 4, 4));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 2, (int)p2.y - 2, 4, 4));
+            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p3.x - 2, (int)p3.y - 2, 4, 4));
 
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 1, (int)p1.y - 1, 2, 2));
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 1, (int)p2.y - 1, 2, 2));
-            e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p3.x - 1, (int)p3.y - 1, 2, 2));
+            e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 2, (int)circumcenter.y - 2, 4, 4));
 
             /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 3, (int)p1.y - 3, 6, 6));
