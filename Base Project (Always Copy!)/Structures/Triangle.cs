@@ -102,24 +102,39 @@ namespace Base_Project__Always_Copy__.Structures
             return hasCommonEdge;
         }
 
+
+        public bool HasPointOnEdge(int screenWidth, int screenHeight)
+        {
+            if (p1.x == 0 || p1.y == 0 || p1.x == screenWidth || p1.y == screenHeight ||
+                p2.x == 0 || p2.y == 0 || p2.x == screenWidth || p2.y == screenHeight ||
+                p3.x == 0 || p3.y == 0 || p3.x == screenWidth || p3.y == screenHeight)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Redraw(PaintEventArgs e)
         {
             
-           // e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 3, (int)circumcenter.y - 3, 6, 6));
+            //e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 3, (int)circumcenter.y - 3, 6, 6));
 
             Point point1 = new Point((int)p1.x, (int)p1.y), point2 = new Point((int)p2.x, (int)p2.y), point3 = new Point((int)p3.x, (int)p3.y);
-            /*
+            
             e.Graphics.DrawLine(Pens.Blue, point1, point2);
             e.Graphics.DrawLine(Pens.Blue, point2, point3);
             e.Graphics.DrawLine(Pens.Blue, point3, point1);
-             * */
-                                                                                            
+             
+                                                                                       
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 2, (int)p1.y - 2, 4, 4));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 2, (int)p2.y - 2, 4, 4));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p3.x - 2, (int)p3.y - 2, 4, 4));
-
-            e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 2, (int)circumcenter.y - 2, 4, 4));
-
+            
+           /* e.Graphics.FillEllipse(Brushes.Orange, new Rectangle((int)circumcenter.x - 2, (int)circumcenter.y - 2, 4, 4));
+            */
             /*
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p1.x - 3, (int)p1.y - 3, 6, 6));
             e.Graphics.FillEllipse(Brushes.Red, new Rectangle((int)p2.x - 3, (int)p2.y - 3, 6, 6));

@@ -28,41 +28,16 @@ class MainState : BasicState
         superTriangles.Add(super1);
         superTriangles.Add(super2);
 
-        int numberOfPoints = 500;
-        double rows = Math.Sqrt(numberOfPoints);
+        int numberOfPoints = 1000;
 
-        int GapY = (int)(Screen.HEIGHT / (rows + 1));
-        int GapX = (int)(Screen.WIDTH / (rows + 1));
-
-
-
-        for (int i = 1; i <= rows; i++)
+        for (int i = 0; i < numberOfPoints; i++)
         {
-            double peturbation = GapX;  //Amount to shift the point by (in total, +/- peturbation/2)
-            double offsetX = ((rand.NextDouble() * peturbation / 8) - (peturbation / 2)); //Calculates a random offset between -peturbation/2 and peturbation/2;
-
-            //Adding edge points.
-            Recalculate(new Vector2((GapX * i) + offsetX, 1));
-            offsetX = ((rand.NextDouble() * peturbation) - (peturbation / 2));
-            Recalculate(new Vector2((GapX * i) + offsetX, Screen.HEIGHT-1));
-            offsetX = ((rand.NextDouble() * peturbation) - (peturbation / 2));
-            Recalculate(new Vector2(1, (GapX * i) + offsetX));
-            offsetX = ((rand.NextDouble() * peturbation) - (peturbation / 2));
-            Recalculate(new Vector2(Screen.WIDTH - 1, (GapX * i) + offsetX));
-
-
-            for (int j = 1; j <= rows; j++)
-            {
-                offsetX = ((rand.NextDouble() * peturbation) - (peturbation / 2)); //Calculates a random offset between -peturbation/2 and peturbation/2;
-                double offsetY = ((rand.NextDouble() * peturbation) - (peturbation / 2)); //For the non edge nodes we need 2 dimensions of coordinate offset.
-                Recalculate(new Vector2(GapX * i + offsetX, GapX * j + offsetY));
-            }
+         //6   Recalculate(new Vector2(rand.Next(20, Screen.WIDTH), rand.Next(20, Screen.HEIGHT)));
         }
 
+       // Console.WriteLine(rows.ToString());
 
-        Console.WriteLine(rows.ToString());
-
-        GenerateVoronoi();
+     //   GenerateVoronoi();
     }
 
     public override void Update()
@@ -108,7 +83,12 @@ class MainState : BasicState
 
         foreach (Edge e in uniqueEdges)
         {
-            triangles.Add(new Triangle(e.p1, e.p2, newPoint));
+            Triangle t = new Triangle(e.p1, e.p2, newPoint);
+
+            if (t.circumradius != 0)
+            {
+                triangles.Add(t);
+            }
         }
     }
 
@@ -121,7 +101,7 @@ class MainState : BasicState
             {
                 if (t2.SharesEdge(superTriangles).Count > 0)
                 {
-                    triangles.Remove(t2);
+                //    triangles.Remove(t2);
                 }
                 else
                 {
@@ -135,7 +115,12 @@ class MainState : BasicState
     public override void MouseClicked(MouseEventArgs e)
     {
         Recalculate(new Vector2(e.X, e.Y));
-        GenerateVoronoi();
+        foreach (Triangle t in triangles.ToArray())
+        {
+        //    if (t.HasPointOnEdge(Screen.WIDTH, Screen.HEIGHT))
+         //       triangles.Remove(t);
+        }
+        //GenerateVoronoi();
     }
 
     public override void Redraw(PaintEventArgs e)
